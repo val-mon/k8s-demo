@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./api
+    image: api:demo
+
+  web:
+    build: ./web
+    image: web:demo
+    environment:
+      API_URL: http://api:5000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - api
